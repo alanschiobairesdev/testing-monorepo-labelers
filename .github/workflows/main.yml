@@ -1,11 +1,11 @@
 name: Workspace Package Labeler
-on: [workflow_dispatch, pull_request]
+on: [pull_request]
 
 jobs:
   label:
     runs-on: ubuntu-latest
     steps:
-      - uses: csi-lk/package-labeler
+      - uses: csi-lk/package-labeler@1.0.1
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           workspace: "packages" # (default)
