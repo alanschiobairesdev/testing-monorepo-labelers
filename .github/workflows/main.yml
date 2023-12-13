@@ -1,14 +1,13 @@
-name: Monorepo PR Repo Labeler
-
+name: Workspace Package Labeler
 on: [workflow_dispatch, pull_request]
 
 jobs:
-  labelPR:
-    name: Label PR With Repo(s)
+  label:
     runs-on: ubuntu-latest
     steps:
-      - name: Label PRs
-        uses: TinkurLab/monorepo-pr-labeler-action@4.1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-           BASE_DIRS: 'packages|apps' # optional
+      - uses: csi-lk/package-labeler
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          workspace: "packages" # (default)
+          name: "folder" # (default) / 'package.json'
+          prefix: "pkg: "
